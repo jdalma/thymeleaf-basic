@@ -95,6 +95,20 @@ public class BasicController {
         return "basic/attribute";
     }
 
+    @GetMapping("/each")
+    public String each(Model model){
+        addUsers(model);
+        return "basic/each";
+    }
+
+    private void addUsers(Model model){
+        List<User> users = new ArrayList<>();
+        users.add(new User("a" , 10));
+        users.add(new User("b" , 20));
+        users.add(new User("c" , 30));
+        model.addAttribute("users" , users);
+    }
+
     @Data
     static class User{
         private String username;
